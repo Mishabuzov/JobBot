@@ -1,10 +1,11 @@
 import os
 import pickle
 import hnswlib
+from pathlib import Path
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import TruncatedSVD
-from settings import CLEANED_VACANCIES_DIR, VECTORIZER_SER_PATH, \
-    TRUNCATER_SER_PATH, INDEX_SER_PATH
+from crawl_and_build.utils import CLEANED_VACANCIES_DIR, VECTORIZER_SER_PATH, \
+    TRUNCATER_SER_PATH, INDEX_SER_PATH, STRUCTURES_DIR
 
 
 def read_vacancies():
@@ -50,6 +51,7 @@ def build_search_index(Xk, ef_construction=1000, M=90, save_index=True):
 
 # if __name__ == '__main__':
 def create_search_structures():
+    Path(STRUCTURES_DIR).mkdir(parents=True, exist_ok=True)
     text_vacancies = read_vacancies()
     X = vectorize_text(text_vacancies)
     Xk = truncate_vectors(X)

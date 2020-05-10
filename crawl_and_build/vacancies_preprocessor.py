@@ -10,7 +10,7 @@ import time
 import os
 import json
 from pathlib import Path
-from settings import RAW_VACANCIES_DIR, CLEANED_VACANCIES_DIR, \
+from crawl_and_build.utils import RAW_VACANCIES_DIR, CLEANED_VACANCIES_DIR, \
     VACANCIES_INFO_SER_PATH
 
 

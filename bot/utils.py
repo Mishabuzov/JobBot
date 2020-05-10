@@ -1,8 +1,6 @@
-import pickle
 import hnswlib
+import pickle
 
-RAW_VACANCIES_DIR = "crawl_and_build/vacancies_data/classified_vacancies"
-CLEANED_VACANCIES_DIR = "crawl_and_build/vacancies_data/cleaned_vacancies"
 STRUCTURES_DIR = "ser_structures"
 
 VECTORIZER_SER_PATH = f'{STRUCTURES_DIR}/TfidfVectorizer_ser.pickle'

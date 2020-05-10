@@ -3,7 +3,7 @@ import requests
 import json
 import time
 from pathlib import Path
-from settings import RAW_VACANCIES_DIR
+from crawl_and_build.utils import RAW_VACANCIES_DIR
 
 BASE_VACANCY_URL = 'https://api.hh.ru/vacancies'
 LIMIT_PAGES = 20  # Limit is set by hh API.
@@ -42,7 +42,7 @@ def process_vacancy(raw_vacancy_description):
             'published_at': raw_vacancy_description['published_at'],
             'url': raw_vacancy_description['alternate_url']}
 
-VACANCIES_SAVING_DIR = f""
+
 specializations = {'1': 'IT', '13': 'medicine', '17': 'sellings'}
 Path(RAW_VACANCIES_DIR).mkdir(parents=True, exist_ok=True)  # check if saving dir is created.
 def save_vacancies(vacancies, spec_id):
@@ -81,7 +81,6 @@ def crawl_vacancies():
                   f'{round((time.time() - start_time) / 60, 2)} minutes are spent')
 
             if len(vacancies) >= LIMIT_VACANCIES_PER_FILE:  # limit number of vacancies by concrete area.
-                print(f"{area_id} is the last area_id for the #{file_num} .json file")
                 save_vacancies(vacancies, spec_id)
                 vacancies = []
                 break

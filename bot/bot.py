@@ -1,8 +1,7 @@
 import telebot
-from string import punctuation
 import time
 from sys import argv as args
-from settings import get_vectorizer, get_truncater, get_index, \
+from utils import get_vectorizer, get_truncater, get_index, \
     get_vacancies_info_dict
 
 TOKEN = args[1]
