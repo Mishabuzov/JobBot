@@ -10,7 +10,7 @@ import time
 import os
 import json
 from pathlib import Path
-from crawl_and_build.utils import RAW_VACANCIES_DIR, CLEANED_VACANCIES_DIR, \
+from utils import RAW_VACANCIES_DIR, CLEANED_VACANCIES_DIR, \
     VACANCIES_INFO_SER_PATH
 
 
@@ -63,7 +63,7 @@ def process_vacancies(vacancies, filename_to_save):
         id_info[vacancy_id]['url'] = vacancy['url'] if vacancy['url'] is not None else ''
         vacancy_id += 1
 
-    print(filename_to_save.split('.')[0])
+    print(filename_to_save)
     test_corpus = []
     start = time.time()
     for i, vacancy in enumerate(vacancies):

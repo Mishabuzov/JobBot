@@ -4,7 +4,9 @@ from sys import argv as args
 from utils import get_vectorizer, get_truncater, get_index, \
     get_vacancies_info_dict
 
-TOKEN = args[1]
+
+with open(args[1].strip(), 'r') as token_file:
+    TOKEN = token_file.read().strip()
 bot = telebot.TeleBot(TOKEN)
 
 GREETING_MSG = "Hi, I am looking for vacancies throughout Russia " \

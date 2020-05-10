@@ -4,7 +4,7 @@ import hnswlib
 from pathlib import Path
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import TruncatedSVD
-from crawl_and_build.utils import CLEANED_VACANCIES_DIR, VECTORIZER_SER_PATH, \
+from utils import CLEANED_VACANCIES_DIR, VECTORIZER_SER_PATH, \
     TRUNCATER_SER_PATH, INDEX_SER_PATH, STRUCTURES_DIR
 
 

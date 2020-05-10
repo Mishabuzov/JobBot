@@ -1,7 +1,10 @@
-from crawl_and_build.vacancies_preprocessor import preprocess_vacancies
-from crawl_and_build.vacancies_indexer import create_search_structures
-from crawl_and_build.vacancies_crawler import crawl_vacancies
+# from crawl_and_build import *
+# import vacancies_preprocessor, vacancies_indexer, vacancies_crawler
+from vacancies_crawler import crawl_vacancies
+from vacancies_indexer import create_search_structures
+from vacancies_preprocessor import preprocess_vacancies
 from sys import argv as args
+
 
 def create_data_and_structures(crawl=False, preprocess=False, create_index=True):
     if crawl:

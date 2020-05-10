@@ -3,7 +3,7 @@ import requests
 import json
 import time
 from pathlib import Path
-from crawl_and_build.utils import RAW_VACANCIES_DIR
+from utils import RAW_VACANCIES_DIR
 
 BASE_VACANCY_URL = 'https://api.hh.ru/vacancies'
 LIMIT_PAGES = 20  # Limit is set by hh API.
