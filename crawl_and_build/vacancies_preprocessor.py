@@ -68,10 +68,7 @@ def process_vacancies(vacancies, filename_to_save):
     start = time.time()
     for i, vacancy in enumerate(vacancies):
         cleaned_description = cleanhtml(vacancy['description'])
-        raw_vacancy_text = f"{vacancy['name']} {vacancy['area']['name']} \
-            {vacancy['address']['raw'] if (vacancy['address'] and vacancy['address']['raw']) else ' '} \
-            {vacancy['employment']['name'] if (vacancy['employment'] and vacancy['employment']['name']) else ' '} \
-            {cleaned_description}"
+        raw_vacancy_text = f"{vacancy['name']} {vacancy['area']['name']} {cleaned_description}"
         test_corpus.append(preprocess_text(raw_vacancy_text))
         save_vacancy_info(vacancy, cleaned_description)
 
