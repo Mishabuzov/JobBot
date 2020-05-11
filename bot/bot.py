@@ -83,7 +83,7 @@ if __name__ == '__main__':
     vectorizer = get_vectorizer()
     svd = get_truncater()
     hnsw_index = get_index()
-    hnsw_index.set_ef(5)
+    # hnsw_index.set_ef(5)
     id_to_vacancy = get_vacancies_info_dict()
     bot.polling()
 

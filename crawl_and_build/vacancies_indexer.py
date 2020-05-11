@@ -39,7 +39,7 @@ def truncate_vectors(X, n_components=1500, save_truncater=True):
     return Xk
 
 
-def build_search_index(Xk, ef_construction=1000, M=90, save_index=True):
+def build_search_index(Xk, ef_construction=2000, M=100, save_index=True):
     p = hnswlib.Index(space='cosine', dim=Xk.shape[1])
     p.init_index(max_elements=Xk.shape[0],
                  ef_construction=ef_construction,
