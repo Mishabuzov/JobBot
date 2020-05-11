@@ -78,4 +78,3 @@ if __name__ == '__main__':
     # hnsw_index.set_ef(5)
     id_to_vacancy = get_vacancies_info_dict()
     bot.polling()
-

@@ -3,7 +3,8 @@ Telegram bot for vacancies search. Implementation is based on [HNSW algorithm](h
 from [hnswlib](https://github.com/nmslib/hnswlib).
 
 Data was crawled from [HH api](https://github.com/hhru/api) and consist of 
-117375 vacancies preferably from the fields of IT, medicine and marketing. 
+117375 vacancies from the fields of IT, medicine and marketing by almost
+all Russian regions. The data is preferably on the Russian language. 
 
 1) The original crawled data in .JSON format is available at:   https://yadi.sk/d/4p2kfG-1ilbH1g 
 2) The preprocessed data is available at:                       https://yadi.sk/d/mrh5x9CzvmWq4w
@@ -17,7 +18,7 @@ In order to run and test the bot, please follow the steps below:
 then put it inside `ser_structures` directory, which is in the root of the 
 repository.
 4) Register your unique Telegram bot, then create `token.txt` in the root of the repository
-and put your inside it.
+and put your token inside it.
 5) Run launching script in the Bash terminal ``. run_bot.sh``.
 That's all, after that you can find your bot in the Telegram and test it!
 
