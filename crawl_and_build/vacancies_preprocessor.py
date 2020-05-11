@@ -11,7 +11,7 @@ import os
 import json
 from pathlib import Path
 from utils import RAW_VACANCIES_DIR, CLEANED_VACANCIES_DIR, \
-    VACANCIES_INFO_SER_PATH
+    VACANCIES_INFO_SER_PATH, STRUCTURES_DIR
 
 
 mystem = Mystem()
@@ -83,7 +83,7 @@ def process_vacancies(vacancies, filename_to_save):
             else:
                 processed_file.write(vacancy)
 
-
+Path(STRUCTURES_DIR).mkdir(parents=True, exist_ok=True)
 def save_vacancies_main_info():
     """Save dict. with main data about each vacancy."""
     with open(VACANCIES_INFO_SER_PATH, 'wb') as f:
