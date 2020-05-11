@@ -1,5 +1,6 @@
 import telebot
 from sys import argv as args
+import time
 from utils import get_vectorizer, get_truncater, get_index, \
     get_vacancies_info_dict
 
@@ -63,10 +64,12 @@ def map_id_to_vacancy(ids):
 
 def process_query(query, K):
     # query = ''.join([i for i in query if not i.isdigit()])
+    start = time.time()
     query = vectorizer.transform([query])
     query = svd.transform(query)
     relevant_ids = hnsw_index.knn_query(query, k=K)
     response_vacancies = map_id_to_vacancy(relevant_ids[0][0])
+    print(f'Query is processed for {time.time() - start}')
     response_vacancies.reverse()
     return response_vacancies
 
