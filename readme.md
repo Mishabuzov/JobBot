@@ -1,5 +1,5 @@
 # Job Bot
-Telegram bot for vacancies search. Implementation is based on HNSW algorithm 
+Telegram bot for vacancies search. Implementation is based on [HNSW algorithm](https://arxiv.org/abs/1603.09320) 
 from [hnswlib](https://github.com/nmslib/hnswlib).
 
 Data was crawled from [HH api](https://github.com/hhru/api) and consist of 
@@ -16,8 +16,8 @@ In order to run and test the bot, please follow the steps below:
 3) Download pre-built [Search Index and all additional data structures](https://yadi.sk/d/Kd-Q7A2UOyseLg), 
 then put it inside `ser_structures` directory, which is in the root of the 
 repository.
-4) Register your unique Telegram bot, then put your token in the `token.txt` file
- in the root of the repository.
+4) Register your unique Telegram bot, then create `token.txt` in the root of the repository
+and put your inside it.
 5) Run launching script in the Bash terminal ``. run_bot.sh``.
 That's all, after that you can find your bot in the Telegram and test it!
 
@@ -25,8 +25,6 @@ Instead of downloading pre-built index and structures you also can launch the
 Crawler and all the preprocessing pipeline in your machine. In this case you collects fresher vacancies, 
 but of course be ready to wait, it is not fast process in general. 
 
-Run  ``. run_pipeline.sh`` in your
-terminal if you want to test the crawler and the pipeline. Finally, when the script finishes, 
-search index and all the structures will build. Just put your token and run ``. run_bot.sh`` 
-after that to test it.    
-
+Run ``. run_pipeline.sh`` in your terminal if you want to test the crawler and the pipeline. 
+Finally, when the script finishes, search index and all the structures will build. 
+Just put your token and run ``. run_bot.sh`` after that to test it.    
