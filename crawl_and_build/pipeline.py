@@ -1,5 +1,3 @@
-# from crawl_and_build import *
-# import vacancies_preprocessor, vacancies_indexer, vacancies_crawler
 from vacancies_crawler import crawl_vacancies
 from vacancies_indexer import create_search_structures
 from vacancies_preprocessor import preprocess_vacancies

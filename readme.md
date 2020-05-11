@@ -23,7 +23,9 @@ That's all, after that you can find your bot in the Telegram and test it!
 
 Instead of downloading pre-built index and structures you also can launch the 
 Crawler and all the preprocessing pipeline in your machine. In this case you collects fresher vacancies, 
-but of course be ready to wait, it is not fast process in general. Run  ``. run_pipeline.sh`` in your
+but of course be ready to wait, it is not fast process in general. 
+
+Run  ``. run_pipeline.sh`` in your
 terminal if you want to test the crawler and the pipeline. Finally, when the script finishes, 
 search index and all the structures will build. Just put your token and run ``. run_bot.sh`` 
 after that to test it.    

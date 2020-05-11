@@ -1,1 +1,1 @@
-python ./crawl_and_build/pipeline.py False False True
+python ./crawl_and_build/pipeline.py True True True

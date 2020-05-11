@@ -19,6 +19,7 @@ RETURN_VACANCIES_COUNT = 5
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
+    counts[message.chat.id] = RETURN_VACANCIES_COUNT
     bot.send_message(message.chat.id, GREETING_MSG)
 
 
@@ -32,10 +33,7 @@ def change_results_count(message):
         return
 
     counts[message.chat.id] = count
-
-    bot.send_message(message.chat.id, 'CHanged')
-
-
+    bot.send_message(message.chat.id, f'Return vacancies count is changed to {counts[message.chat.id]}')
 
 
 @bot.message_handler(content_types=['text'])
@@ -48,17 +46,6 @@ def send_text(message):
     relevant_vacancies = process_query(text, counts[message.chat.id])
     for vacancy in relevant_vacancies:
         bot.send_message(message.chat.id, vacancy, parse_mode='Markdown')
-
-    # TODO: Change to regexp tokenizer check. If it is empty -> warning!
-    # if text in punctuation:
-    #     bot.send_message(message.chat.id,
-    #                      'please do not construct your query only '
-    #                      'from specsymbols')
-    #
-    #
-    #     bot.send_message(message.chat.id, 'Привет, мой создатель')
-    # elif message.text == 'Пока':
-    #     bot.send_message(message.chat.id, 'Прощай, создатель')
 
 
 def map_id_to_vacancy(ids):
@@ -74,17 +61,15 @@ def map_id_to_vacancy(ids):
     return response_vacancies
 
 
-# TODO: Добавить ручное удаление цифр + spellchecker
 def process_query(query, K):
     # query = ''.join([i for i in query if not i.isdigit()])
     query = vectorizer.transform([query])
     query = svd.transform(query)
     relevant_ids = hnsw_index.knn_query(query, k=K)
     response_vacancies = map_id_to_vacancy(relevant_ids[0][0])
+    response_vacancies.reverse()
     return response_vacancies
 
-
-# TODO: Сообщения на вывод +
 
 if __name__ == '__main__':
     vectorizer = get_vectorizer()
