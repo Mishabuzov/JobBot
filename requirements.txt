@@ -3,4 +3,3 @@ scikit-learn==0.21.3
 pyTelegramBotAPI==3.7.1
 pymystem3==0.2.0
 hnswlib==0.3.4
-# python==3.7.4

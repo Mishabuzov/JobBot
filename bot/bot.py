@@ -1,10 +1,9 @@
 import telebot
-import time
 from sys import argv as args
 from utils import get_vectorizer, get_truncater, get_index, \
     get_vacancies_info_dict
 
-
+counts = {}
 with open(args[1].strip(), 'r') as token_file:
     TOKEN = token_file.read().strip()
 bot = telebot.TeleBot(TOKEN)
@@ -25,8 +24,18 @@ def start_message(message):
 
 @bot.message_handler(commands=['set_results_count'])
 def change_results_count(message):
-    msg = f"Currently {RETURN_VACANCIES_COUNT} are returning. print how much you "
-    # bot.send_message(message.chat.id)
+    _, count = message.text.split(' ')
+    try:
+        count = int(count)
+    except:
+        bot.send_message(message.chat.id, "To change this number, run the command: /set_results_count :value:\n")
+        return
+
+    counts[message.chat.id] = count
+
+    bot.send_message(message.chat.id, 'CHanged')
+
+
 
 
 @bot.message_handler(content_types=['text'])
@@ -36,9 +45,7 @@ def send_text(message):
     if text == '':
         return
 
-    start = time.time()
-    relevant_vacancies = process_query(text)
-    print(f"Query processed by {time.time() - start} sec.")
+    relevant_vacancies = process_query(text, counts[message.chat.id])
     for vacancy in relevant_vacancies:
         bot.send_message(message.chat.id, vacancy, parse_mode='Markdown')
 
@@ -68,11 +75,11 @@ def map_id_to_vacancy(ids):
 
 
 # TODO: Добавить ручное удаление цифр + spellchecker
-def process_query(query):
+def process_query(query, K):
     # query = ''.join([i for i in query if not i.isdigit()])
     query = vectorizer.transform([query])
     query = svd.transform(query)
-    relevant_ids = hnsw_index.knn_query(query, k=RETURN_VACANCIES_COUNT)
+    relevant_ids = hnsw_index.knn_query(query, k=K)
     response_vacancies = map_id_to_vacancy(relevant_ids[0][0])
     return response_vacancies
 
